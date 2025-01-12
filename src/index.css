@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-landing {
+  background-image: url("./assets/beams-basic.png");
+  background-size: cover;
+}
+
+.word-slider {
+  position: relative;
+  overflow: hidden;
+  font-weight: bold;
+  display: flex;
+}
+
+.word {
+  position: absolute;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.word.slide-down {
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.word:not(.slide-down) {
+  transform: translateY(0);
+  opacity: 1;
+}
