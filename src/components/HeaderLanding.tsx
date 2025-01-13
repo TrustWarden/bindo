@@ -31,9 +31,12 @@ function HeaderLanding() {
           </a>
         </div>
         <div>
-          <button className="bg-zinc-900 py-2 px-4 lg:py-3 lg:px-6 rounded-full text-neutral-50 font-bold hover:shadow-lg hover:scale-105 hover:transition-transform hover:bg-sky-500">
+          <a
+            href="/stake"
+            className="bg-zinc-900 py-2 px-4 lg:py-3 lg:px-6 rounded-full text-neutral-50 font-bold hover:shadow-lg hover:scale-105 hover:transition-transform hover:bg-sky-500"
+          >
             Stake ETH
-          </button>
+          </a>
         </div>
       </nav>
     </header>
