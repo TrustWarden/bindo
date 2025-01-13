@@ -1,0 +1,28 @@
+function HeaderStake() {
+  return (
+    <header className="border-b-2 border-gray-200">
+      <nav className="mx-auto flex max-w-full justify-between items-center py-3 pr-2 lg:p-5 sm:px-1 lg:px-8">
+        <div className="flex">
+          <a href="/" className="flex items-center">
+            <img src={logo} className="max-w-24 max-h-24" />
+            <span className="text-4xl text-bg-neutral-100 relative -left-5 hidden lg:block">
+              Bindo
+            </span>
+          </a>
+        </div>
+
+        <div className="hidden lg:flex space-x-16">{/* middle menu */}</div>
+        <div>
+          <button className="bg-sky-500 py-2 px-4 lg:py-3 lg:px-6 rounded-lg text-neutral-50 font-bold hover:shadow-lg hover:scale-105 hover:transition-transform hover:bg-sky-600">
+            Connect wallet
+          </button>
+          <button className="bg-gray-500 py-2 px-4 lg:py-3 lg:px-6 rounded-lg text-neutral-50 font-bold hover:shadow-lg hover:scale-105 hover:transition-transform hover:bg-gray-400">
+            dark mode
+          </button>
+        </div>
+      </nav>
+    </header>
+  );
+}
+
+export default HeaderStake;

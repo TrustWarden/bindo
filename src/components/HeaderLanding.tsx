@@ -1,6 +1,6 @@
 import logo from "../assets/ethereum-logo.png";
 
-function Header() {
+function HeaderLanding() {
   return (
     <header className="border-b-2 border-gray-200">
       <nav className="mx-auto flex max-w-full justify-between items-center py-3 pr-2 lg:p-5 sm:px-1 lg:px-8">
@@ -31,7 +31,7 @@ function Header() {
           </a>
         </div>
         <div>
-          <button className="bg-zinc-900 py-2 px-4 lg:py-3 lg:px-6 rounded-full text-neutral-50 font-bold hover:shadow-lg hover:scale-105 hover:transition-transform">
+          <button className="bg-zinc-900 py-2 px-4 lg:py-3 lg:px-6 rounded-full text-neutral-50 font-bold hover:shadow-lg hover:scale-105 hover:transition-transform hover:bg-sky-500">
             Stake ETH
           </button>
         </div>
@@ -40,4 +40,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default HeaderLanding;
