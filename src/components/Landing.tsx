@@ -1,4 +1,4 @@
-import LandingContentRight from "./LadingContentRight";
+import LandingContentRight from "./LandingContentRight";
 import LandingContentLeft from "./LandingContentLeft";
 import certora from "../assets/certora.svg";
 import ackee from "../assets/ackee.svg";

@@ -1,11 +1,14 @@
 import { FaEthereum } from "react-icons/fa";
 import BoxStakePage from "./BoxStakePage";
+import useWallet from "../hooks/useWallet";
 
 interface Props {
   className?: string;
 }
 
 function StakeBox({ className }: Props) {
+  const { connectWallet } = useWallet();
+
   return (
     <BoxStakePage className={className}>
       <div className="relative">
@@ -20,7 +23,10 @@ function StakeBox({ className }: Props) {
         </button>
       </div>
 
-      <button className="w-full min-h-14 text-lg bg-sky-500 rounded-lg">
+      <button
+        onClick={connectWallet}
+        className="w-full min-h-14 text-lg bg-sky-500 rounded-lg"
+      >
         Connect wallet
       </button>
 

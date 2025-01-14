@@ -4,8 +4,13 @@ import { MdSunny } from "react-icons/md";
 import { BsLightningCharge } from "react-icons/bs";
 import { PiHandWithdrawLight } from "react-icons/pi";
 import { PiBankLight } from "react-icons/pi";
+import useWallet from "../hooks/useWallet";
+import shortenAddress from "../utils/shortenAddress";
 
 function HeaderStake() {
+  const { walletAddress, connectWallet } = useWallet();
+  const shortAddress = shortenAddress(walletAddress || "");
+
   return (
     <header className="border-b border-gray-800">
       <nav className="mx-auto flex max-w-full justify-between items-center py-3 pr-2 sm:px-1 lg:px-8">
@@ -34,8 +39,11 @@ function HeaderStake() {
         </div>
 
         <div className="flex space-x-2 lg:space-x-4">
-          <button className="bg-sky-500 py-2 px-4 lg:py-2 lg:px-4 min-h-10 rounded-lg text-neutral-50 font-bold hover:bg-sky-600">
-            Connect wallet
+          <button
+            onClick={connectWallet}
+            className="bg-sky-500 py-2 px-4 lg:py-2 lg:px-4 min-h-10 rounded-lg text-neutral-50 font-bold hover:bg-sky-600"
+          >
+            {walletAddress ? shortAddress : "Connect wallet"}
           </button>
           <button className="bg-gray-500 py-2 px-4 lg:py-2 lg:px-4 min-h-10 rounded-lg text-neutral-50 font-bold hover:bg-gray-400">
             <MdSunny />
