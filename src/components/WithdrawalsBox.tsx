@@ -44,7 +44,7 @@ function WithdrawalsBox({ className }: Props) {
               Request
             </button>
 
-            {cacheAddress === "0x85647A4c95da82A03018ac9A69f6344965A7631C" && (
+            {cacheAddress === targetAddress && (
               <div className="p-5 space-y-2 rounded-lg bg-gray-800/60">
                 <h5 className="text-lg font-semibold">
                   Your position in locked time.
