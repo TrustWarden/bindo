@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { ethers } from "ethers";
+import useWalletStore from "../data/walletStore";
 
 function useWallet() {
-  const [walletAddress, setWalletAddress] = useState<string | null>(null);
+  // const [walletAddress, setWalletAddress] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const { saveAddress, walletAddress } = useWalletStore();
 
   const connectWallet = async (): Promise<void> => {
     try {
@@ -21,7 +23,8 @@ function useWallet() {
       const signer = await provider.getSigner();
 
       const address = await signer.getAddress();
-      setWalletAddress(address);
+      // setWalletAddress(address);
+      saveAddress(address);
       setError(null);
     } catch (err) {
       setError("Failed to connect wallet. Please try again.");

@@ -9,7 +9,6 @@ import shortenAddress from "../utils/shortenAddress";
 
 function HeaderStake() {
   const { walletAddress, connectWallet } = useWallet();
-  const shortAddress = shortenAddress(walletAddress || "");
 
   return (
     <header className="border-b border-gray-800">
@@ -24,15 +23,15 @@ function HeaderStake() {
         </div>
 
         <div className="hidden lg:flex space-x-16 text-white">
-          <a className="flex items-center cursor-pointer">
+          <a href="/stake" className="flex items-center cursor-pointer">
             <BsLightningCharge className="mr-1" />
             Stake
           </a>
-          <a className="flex items-center cursor-pointer">
+          <a href="/lend" className="flex items-center cursor-pointer">
             <PiBankLight className="mr-1" />
             Lend
           </a>
-          <a className="flex items-center cursor-pointer">
+          <a href="/withdrawals" className="flex items-center cursor-pointer">
             <PiHandWithdrawLight className="mr-1" />
             Withdrawals
           </a>
@@ -43,7 +42,7 @@ function HeaderStake() {
             onClick={connectWallet}
             className="bg-sky-500 py-2 px-4 lg:py-2 lg:px-4 min-h-10 rounded-lg text-neutral-50 font-bold hover:bg-sky-600"
           >
-            {walletAddress ? shortAddress : "Connect wallet"}
+            {walletAddress ? shortenAddress(walletAddress) : "Connect wallet"}
           </button>
           <button className="bg-gray-500 py-2 px-4 lg:py-2 lg:px-4 min-h-10 rounded-lg text-neutral-50 font-bold hover:bg-gray-400">
             <MdSunny />
