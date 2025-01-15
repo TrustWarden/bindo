@@ -1,6 +1,6 @@
-import DisableMessage from "./components/DisableMessage";
+import DisableMessage from "./DisableMessage";
 import HeaderStake from "./HeaderStake";
-import LendBox from "./components/LendBox";
+import LendBox from "./LendBox";
 import StickyFooter from "./StickyFooter";
 
 function LendMain() {

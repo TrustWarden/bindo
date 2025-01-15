@@ -1,4 +1,4 @@
-import useWalletStore from "../../data/walletStore";
+import useWalletStore from "../data/walletStore";
 
 interface Props {
   className?: string;

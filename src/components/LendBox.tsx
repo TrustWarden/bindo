@@ -1,14 +1,15 @@
-import { FaEthereum } from "react-icons/fa";
+import { FaBitcoin } from "react-icons/fa";
+// import useWalletStore from "../data/walletStore";
 import BoxStakePage from "./BoxStakePage";
-import useWallet from "../../hooks/useWallet";
+import useWallet from "../hooks/useWallet";
+import useRandomGas from "../hooks/useRandomGas";
 
 interface Props {
   className?: string;
 }
 
-function StakeBox({ className }: Props) {
-  const { connectWallet, walletAddress } = useWallet();
-
+function LendBox({ className }: Props) {
+  const { walletAddress, connectWallet } = useWallet();
   return (
     <BoxStakePage className={walletAddress ? `${className} blur-sm` : ""}>
       {/* todo: add a box on top of blur one to show a tempo disabled message */}
@@ -16,9 +17,9 @@ function StakeBox({ className }: Props) {
         <input
           className="w-full p-3 pl-12 min-h-14 text-sm placeholder:text-sm bg-slate-600 border border-gray-500 rounded-lg "
           type="number"
-          placeholder="ETH amount"
+          placeholder="WBTC amount"
         />
-        <FaEthereum className="absolute inset-y-0 left-0 pl-3 top-3 text-3xl text-gray-400 items-center content-center" />
+        <FaBitcoin className="absolute inset-y-0 left-0 pl-3 top-3 text-3xl text-gray-400 items-center content-center" />
         <button className="absolute px-4 max-h-8 inset-y-0 right-3 top-3 text-sm rounded-lg bg-blue-800/30 text-sky-500/70">
           MAX
         </button>
@@ -29,7 +30,7 @@ function StakeBox({ className }: Props) {
           disabled
           className="w-full min-h-14 text-lg bg-gray-500 rounded-lg"
         >
-          Stake
+          Lend
         </button>
       ) : (
         <button
@@ -40,7 +41,7 @@ function StakeBox({ className }: Props) {
         </button>
       )}
 
-      <div className="p-5 space-y-2 rounded-lg bg-gray-800/60">
+      {/* <div className="p-5 space-y-2 rounded-lg bg-gray-800/60">
         <h5 className="text-lg font-semibold">
           New way to support decentralization
         </h5>
@@ -56,24 +57,24 @@ function StakeBox({ className }: Props) {
           may vary. Vaults use carries risk. By proceeding, you'll be redirected
           to a third-party site.
         </p>
-      </div>
+      </div> */}
 
       <div className="grid grid-cols-2 text-sm text-gray-400/60">
         <ul className="space-y-2">
-          <li>You will receive</li>
-          <li>Exchange rate</li>
+          {/* <li>You will receive</li> */}
+          {/* <li>Exchange rate</li> */}
           <li>Max transaction cost</li>
           <li>Reward fee</li>
         </ul>
         <ul className="text-end space-y-2">
-          <li>0.0 stETH</li>
-          <li>1 ETH = 1 stETH</li>
-          <li>$8.03</li>
-          <li>10%</li>
+          {/* <li>0.0 stETH</li> */}
+          {/* <li>1 ETH = 1 stETH</li> */}
+          <li>${useRandomGas()}</li>
+          <li>0.3%</li>
         </ul>
       </div>
     </BoxStakePage>
   );
 }
 
-export default StakeBox;
+export default LendBox;

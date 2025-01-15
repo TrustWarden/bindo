@@ -1,24 +1,23 @@
 import HeaderStake from "./HeaderStake";
-import StakeBox from "./components/StakeBox";
-import DisableMessage from "./components/DisableMessage";
 import StickyFooter from "./StickyFooter";
-import Disclosures from "./components/Disclosures";
+import { Outlet } from "react-router-dom";
+import WithdrawalsTab from "./WithdrawalsTab";
 
-function StakeMain() {
+function WithdrawalsMain() {
   return (
     <>
       <div className="pb-10 min-h-screen bg-gradient-radial-small from-darkBlue to-niceBlack">
         <HeaderStake />
 
-        <DisableMessage />
-
         <div className="w-3/4 lg:w-2/5 mx-auto pt-7 lg:pt-16 items-center text-xl text-white space-y-3">
-          <h1 className="flex justify-center font-thin -mb-3">Staking</h1>
+          <h1 className="flex justify-center font-thin -mb-3">Withdrawals</h1>
           <span className="flex justify-center font-thin text-sm text-gray-500 mb-5">
-            Stake ETH and receive stETH while staking
+            Request ETH/WBTC withdrawal and claim your coins
           </span>
-          <StakeBox className="mb-10" />
-          <Disclosures />
+
+          <WithdrawalsTab />
+
+          <Outlet />
         </div>
       </div>
       <StickyFooter />
@@ -26,4 +25,4 @@ function StakeMain() {
   );
 }
 
-export default StakeMain;
+export default WithdrawalsMain;
