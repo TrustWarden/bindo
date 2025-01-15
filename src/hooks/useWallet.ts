@@ -1,38 +1,48 @@
-import { useState } from "react";
-import { ethers } from "ethers";
+import { useQuery } from "@tanstack/react-query";
 import useWalletStore from "../data/walletStore";
+import { ethers } from "ethers";
 
 function useWallet() {
-  // const [walletAddress, setWalletAddress] = useState<string | null>(null);
-  const [error, setError] = useState<string | null>(null);
   const { saveAddress, walletAddress } = useWalletStore();
 
-  const connectWallet = async (): Promise<void> => {
-    try {
-      if (!window.ethereum) {
-        setError(
-          "Web3 wallet not detected. Please install one to use this feature."
-        );
-        return;
-      }
-
-      const provider = new ethers.BrowserProvider(
-        window.ethereum as unknown as ethers.Eip1193Provider
-      );
-      await provider.send("eth_requestAccounts", []);
-      const signer = await provider.getSigner();
-
-      const address = await signer.getAddress();
-      // setWalletAddress(address);
-      saveAddress(address);
-      setError(null);
-    } catch (err) {
-      setError("Failed to connect wallet. Please try again.");
-      console.log(err);
+  const connectWallet = async (): Promise<string> => {
+    if (!window.ethereum) {
+      throw new Error("Web3 wallet not detected. Please install one.");
     }
+
+    const provider = new ethers.BrowserProvider(
+      window.ethereum as unknown as ethers.Eip1193Provider
+    );
+    await provider.send("eth_requestAccounts", []);
+    const signer = await provider.getSigner();
+
+    const address = await signer.getAddress();
+    saveAddress(address);
+
+    localStorage.setItem("cacheAddress", address);
+
+    return address;
   };
 
-  return { walletAddress, error, connectWallet };
+  const {
+    data: cacheAddress,
+    error,
+    isLoading,
+  } = useQuery<string, Error>({
+    queryKey: ["cacheAddress"],
+    queryFn: async () => {
+      const cachedAddress = localStorage.getItem("cacheAddress");
+      if (cachedAddress) {
+        return cachedAddress;
+      }
+
+      return connectWallet();
+    },
+    staleTime: 1000 * 60,
+    refetchOnWindowFocus: false,
+  });
+
+  return { connectWallet, cacheAddress, walletAddress, error, isLoading };
 }
 
 export default useWallet;

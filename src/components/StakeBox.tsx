@@ -8,10 +8,10 @@ interface Props {
 }
 
 function StakeBox({ className }: Props) {
-  const { connectWallet, walletAddress } = useWallet();
+  const { connectWallet, cacheAddress } = useWallet();
 
   return (
-    <BoxStakePage className={walletAddress ? `${className} blur-sm` : ""}>
+    <BoxStakePage className={cacheAddress ? `${className} blur-sm` : ""}>
       {/* todo: add a box on top of blur one to show a tempo disabled message */}
       <div className="relative">
         <input
@@ -25,7 +25,7 @@ function StakeBox({ className }: Props) {
         </button>
       </div>
 
-      {walletAddress ? (
+      {cacheAddress ? (
         <button
           disabled
           className="w-full min-h-14 text-lg bg-gray-500 rounded-lg"
