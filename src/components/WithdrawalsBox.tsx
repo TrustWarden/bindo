@@ -15,7 +15,7 @@ function WithdrawalsBox({ className }: Props) {
   //   startDate: "18 JUN 2021",
   //   endDate: "17 JUN 2025",
   // };
-  const targetAddress = "0x85647A4c95da82A03018ac9A69f6344965A7631C";
+  const targetAddress = "0xd7A5148d1836D64432B6D98f4c1f7D07B6CaAAC7";
 
   const { cacheAddress, connectWallet } = useWallet();
   const { selectedCoin } = useWalletStore();
