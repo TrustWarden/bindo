@@ -1,11 +1,9 @@
 import logoSky from "../assets/ethereum-logo-sky.png";
-import { MdSunny } from "react-icons/md";
-// import { FaMoon } from "react-icons/fa";
 import { BsLightningCharge } from "react-icons/bs";
 import { PiHandWithdrawLight } from "react-icons/pi";
 import { PiBankLight } from "react-icons/pi";
-import shortenAddress from "../utils/shortenAddress";
 import useWallet from "../hooks/useWallet";
+import DisconnectDropdown from "./DisconnectDropdown";
 
 function HeaderStake() {
   const { connectWallet, cacheAddress } = useWallet();
@@ -38,15 +36,21 @@ function HeaderStake() {
         </div>
 
         <div className="flex space-x-2 lg:space-x-4">
-          <button
-            onClick={connectWallet}
-            className="bg-sky-500 py-2 px-4 lg:py-2 lg:px-4 min-h-10 rounded-lg text-neutral-50 font-bold hover:bg-sky-600"
-          >
-            {cacheAddress ? shortenAddress(cacheAddress) : "Connect wallet"}
-          </button>
-          <button className="bg-gray-500 py-2 px-4 lg:py-2 lg:px-4 min-h-10 rounded-lg text-neutral-50 font-bold hover:bg-gray-400">
-            <MdSunny />
-          </button>
+          {cacheAddress && cacheAddress.length > 1 ? (
+            <>
+              <DisconnectDropdown />
+            </>
+          ) : (
+            <>
+              <button
+                onClick={connectWallet}
+                className="bg-sky-500 py-2 px-4 lg:py-2 lg:px-4 min-h-10 rounded-lg text-neutral-50 font-bold hover:bg-sky-600"
+              >
+                Connect wallet
+              </button>
+            </>
+          )}
+          {/* <DarkModeButton /> */}
         </div>
       </nav>
     </header>

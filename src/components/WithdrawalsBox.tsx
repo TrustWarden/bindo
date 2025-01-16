@@ -9,12 +9,6 @@ interface Props {
 }
 
 function WithdrawalsBox({ className }: Props) {
-  // const staked = {
-  //   ethAmount: 42.18,
-  //   btcAmount: 3.026,
-  //   startDate: "18 JUN 2021",
-  //   endDate: "17 JUN 2025",
-  // };
   const targetAddress = "0xd7A5148d1836D64432B6D98f4c1f7D07B6CaAAC7";
 
   const { cacheAddress, connectWallet } = useWallet();
@@ -87,8 +81,8 @@ function WithdrawalsBox({ className }: Props) {
                   </ul>
                   <ul className="text-end space-y-2">
                     <li>42.18 ETH</li>
-                    <li>18 JUN 2021</li>
-                    <li>17 JUN 2025</li>
+                    <li>15 APR 2023</li>
+                    <li>15 JUN 2025</li>
                     <li>1 ETH = 1 stETH</li>
                   </ul>
                 </>
@@ -102,8 +96,8 @@ function WithdrawalsBox({ className }: Props) {
                   </ul>
                   <ul className="text-end space-y-2">
                     <li>3.026 WBTC</li>
-                    <li>18 JUN 2021</li>
-                    <li>17 JUN 2025</li>
+                    <li>15 APR 2023</li>
+                    <li>15 JUN 2025</li>
                     <li>1 BTC = 1 WBTC</li>
                   </ul>
                 </>

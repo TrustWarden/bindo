@@ -1,9 +1,12 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import useWalletStore from "../data/walletStore";
 import { ethers } from "ethers";
+import ms from "ms";
+import { useEffect } from "react";
 
 function useWallet() {
-  const { saveAddress, walletAddress } = useWalletStore();
+  const queryClient = useQueryClient();
+  const { saveAddress, resetAddress, walletAddress } = useWalletStore();
 
   const connectWallet = async (): Promise<string> => {
     if (!window.ethereum) {
@@ -20,8 +23,15 @@ function useWallet() {
     saveAddress(address);
 
     localStorage.setItem("cacheAddress", address);
+    queryClient.setQueryData(["cacheAddress"], address);
 
     return address;
+  };
+
+  const disconnectWallet = (): void => {
+    resetAddress();
+    localStorage.removeItem("cacheAddress");
+    queryClient.removeQueries();
   };
 
   const {
@@ -38,11 +48,25 @@ function useWallet() {
 
       return connectWallet();
     },
-    staleTime: 1000 * 60,
+    staleTime: ms("1d"),
     refetchOnWindowFocus: false,
   });
 
-  return { connectWallet, cacheAddress, walletAddress, error, isLoading };
+  useEffect(() => {
+    const cachedAddress = localStorage.getItem("walletAddress");
+    if (cachedAddress) {
+      queryClient.setQueryData(["walletAddress"], cachedAddress);
+    }
+  }, [queryClient]);
+
+  return {
+    disconnectWallet,
+    connectWallet,
+    cacheAddress,
+    walletAddress,
+    error,
+    isLoading,
+  };
 }
 
 export default useWallet;

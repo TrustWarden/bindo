@@ -11,7 +11,11 @@ interface Props {
 function LendBox({ className }: Props) {
   const { cacheAddress, connectWallet } = useWallet();
   return (
-    <BoxStakePage className={cacheAddress ? `${className} blur-sm` : ""}>
+    <BoxStakePage
+      className={
+        cacheAddress && cacheAddress.length > 1 ? `${className} blur-sm` : ""
+      }
+    >
       {/* todo: add a box on top of blur one to show a tempo disabled message */}
       <div className="relative">
         <input
@@ -25,7 +29,7 @@ function LendBox({ className }: Props) {
         </button>
       </div>
 
-      {cacheAddress ? (
+      {cacheAddress && cacheAddress.length > 1 ? (
         <button
           disabled
           className="w-full min-h-14 text-lg bg-gray-500 rounded-lg"
