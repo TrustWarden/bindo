@@ -4,7 +4,7 @@ function LandingContentRight() {
   return (
     <div className="lg:flex-1 flex-col lg:px-9 lg:py-32 space-y-2 lg:space-y-6 mt-6 lg:mt-0">
       <p className="flex-1 text-4xl lg:text-6xl font-light md:text-4xl sm:text-4xl mb-2 lg:mb-3">
-        <WordSlider /> ETH Staking & <br />
+        Enterprise solution of <br /> <WordSlider /> ETH Staking & <br />
         WBTC Lending
       </p>
       <p className="text-sm md:text-lg text-gray-400">
@@ -13,12 +13,12 @@ function LandingContentRight() {
 
       <div className="flex flex-col lg:flex-row text-zinc-600 h-24 space-x-0 lg:space-x-4">
         <div className="lg:border-r-2 lg:border-gray-200 px-0 lg:pr-5 pt-3">
-          <p className="text-4xl">4.9%</p>
+          <p className="text-4xl">2.9%</p>
           <p className="text-gray-300 text-2xl">APR </p>
         </div>
 
         <div className="pt-3 lg:pl-3">
-          <p className="text-4xl">$29,405,228,045</p>
+          <p className="text-4xl">$2,405,228,045</p>
           <p className="text-gray-300 text-2xl"> TVL</p>
         </div>
 

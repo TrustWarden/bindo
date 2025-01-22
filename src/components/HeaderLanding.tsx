@@ -14,20 +14,32 @@ function HeaderLanding() {
         </div>
 
         <div className="hidden lg:flex space-x-16">
-          <a href="#" className="text-sm/6 font-semibold text-gray-900">
-            About
+          <a href="/stake" className="text-sm/6 font-semibold text-gray-900">
+            Stake
           </a>
-          <a href="#" className="text-sm/6 font-semibold text-gray-900">
-            Marketplace
+          <a href="/lend" className="text-sm/6 font-semibold text-gray-900">
+            Lend
           </a>
-          <a href="#" className="text-sm/6 font-semibold text-gray-900">
-            Company
+          <a
+            href="https://github.com/lidofinance"
+            className="text-sm/6 font-semibold text-gray-900"
+          >
+            Github
           </a>
-          <a href="#" className="text-sm/6 font-semibold text-gray-900">
-            Developers
+          <a
+            href="https://github.com/lidofinance/lido-ethereum-sdk"
+            className="text-sm/6 font-semibold text-gray-900"
+          >
+            SDK
           </a>
-          <a href="#" className="text-sm/6 font-semibold text-gray-900">
-            Learn
+          <a href="/privacy" className="text-sm/6 font-semibold text-gray-900">
+            Privacy
+          </a>
+          <a
+            href="/terms-of-use"
+            className="text-sm/6 font-semibold text-gray-900"
+          >
+            Terms of Use
           </a>
         </div>
         <div>

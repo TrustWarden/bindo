@@ -8,6 +8,7 @@ import oxorio from "../assets/oxorio.svg";
 import sigmaprime from "../assets/sigmaprime.svg";
 import statemind from "../assets/statemind.svg";
 import Box from "./Box";
+import LandingFooter from "./LandingFooter";
 
 function Landing() {
   return (
@@ -30,12 +31,18 @@ function Landing() {
             </div>
 
             <div className="justify-content-end lg:absolute lg:right-56 lg:space-x-7 space-x-5 mt-10 lg:mt-0">
-              <button className="border border-gray hover:border-sky-500 hover:text-sky-500 hover:transition-all rounded-full py-3 px-6">
+              <a
+                href="https://github.com/lidofinance/audits"
+                className="border border-gray hover:border-sky-500 hover:text-sky-500 hover:transition-all rounded-full py-3 px-6"
+              >
                 Audit
-              </button>
-              <button className="border border-gray hover:border-sky-500 hover:text-sky-500 hover:transition-all rounded-full py-3 px-6">
+              </a>
+              <a
+                href="https://immunefi.com/bug-bounty/lido/information/"
+                className="border border-gray hover:border-sky-500 hover:text-sky-500 hover:transition-all rounded-full py-3 px-6"
+              >
                 Bounty
-              </button>
+              </a>
             </div>
           </div>
 
@@ -83,6 +90,7 @@ function Landing() {
           </a>
         </Box>
       </div>
+      <LandingFooter />
     </>
   );
 }

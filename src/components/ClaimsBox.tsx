@@ -9,7 +9,6 @@ function ClaimsBox() {
       {cacheAddress ? (
         <span className="text-sm text-gray-300">
           You did not make request yet.
-          <br /> First need to request to claims be avalaible after 7 days.
         </span>
       ) : (
         <>

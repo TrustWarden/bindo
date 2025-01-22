@@ -3,7 +3,9 @@ import DisclosureBox from "./DisclosureBox";
 function Disclosures() {
   return (
     <>
-      <h3 className="text-lg font-semibold ml-0 lg:ml-20">FAQ</h3>
+      <h3 className="text-lg text-gray-900 dark:text-gray-300 font-semibold ml-0 lg:ml-20">
+        FAQ
+      </h3>
       <DisclosureBox title="What is Bindo?">
         Bindo is the name of a family of open-source peer-to-system software
         tools deployed and functioning on the Ethereum and Polygon blockchain

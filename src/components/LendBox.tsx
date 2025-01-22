@@ -1,3 +1,4 @@
+import { useRef, useState } from "react";
 import { FaBitcoin } from "react-icons/fa";
 // import useWalletStore from "../data/walletStore";
 import BoxStakePage from "./BoxStakePage";
@@ -9,37 +10,48 @@ interface Props {
 }
 
 function LendBox({ className }: Props) {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [error, setError] = useState<string | null>(null);
   const { cacheAddress, connectWallet } = useWallet();
-  return (
-    <BoxStakePage
-      className={
-        cacheAddress && cacheAddress.length > 1 ? `${className} blur-sm` : ""
+
+  const handleChanges = () => {
+    if (inputRef.current) {
+      const value = parseFloat(inputRef.current.value);
+
+      if (value < 3) {
+        setError("The minimum value must be 3 WBTC");
+      } else {
+        setError(null);
       }
-    >
-      {/* todo: add a box on top of blur one to show a tempo disabled message */}
+    }
+  };
+
+  return (
+    <BoxStakePage className={className}>
       <div className="relative">
         <input
-          className="w-full p-3 pl-12 min-h-14 text-sm placeholder:text-sm bg-slate-600 border border-gray-500 rounded-lg "
+          ref={inputRef}
+          onChange={handleChanges}
+          className="w-full p-3 pl-12 min-h-14 text-sm placeholder:text-sm bg-gray-300 dark:bg-slate-600 border border-gray-500 rounded-lg "
           type="number"
           placeholder="WBTC amount"
         />
         <FaBitcoin className="absolute inset-y-0 left-0 pl-3 top-3 text-3xl text-gray-400 items-center content-center" />
-        <button className="absolute px-4 max-h-8 inset-y-0 right-3 top-3 text-sm rounded-lg bg-blue-800/30 text-sky-500/70">
+        {/* <button className="absolute px-2 lg:px-4 max-h-8 inset-y-0 right-3 top-3 text-sm rounded-lg bg-blue-800/30 text-gray-300 dark:text-sky-500/70">
           MAX
-        </button>
+        </button> */}
       </div>
 
+      {error && <div className="text-red-400 text-sm">{error}</div>}
+
       {cacheAddress && cacheAddress.length > 1 ? (
-        <button
-          disabled
-          className="w-full min-h-14 text-lg bg-gray-500 rounded-lg"
-        >
+        <button className="w-full min-h-14 text-lg text-gray-200 bg-gray-500 rounded-lg">
           Lend
         </button>
       ) : (
         <button
           onClick={connectWallet}
-          className="w-full min-h-14 text-lg bg-sky-500 rounded-lg"
+          className="w-full min-h-14 text-lg text-gray-200 bg-sky-500 rounded-lg"
         >
           Connect wallet
         </button>
@@ -65,14 +77,14 @@ function LendBox({ className }: Props) {
 
       <div className="grid grid-cols-2 text-sm text-gray-400/60">
         <ul className="space-y-2">
-          {/* <li>You will receive</li> */}
-          {/* <li>Exchange rate</li> */}
+          <li>Minimum deposit</li>
+          <li>Minimum time lock</li>
           <li>Max transaction cost</li>
           <li>Reward fee</li>
         </ul>
         <ul className="text-end space-y-2">
-          {/* <li>0.0 stETH</li> */}
-          {/* <li>1 ETH = 1 stETH</li> */}
+          <li>3 BTC</li>
+          <li>1 Year</li>
           <li>${useRandomGas()}</li>
           <li>0.3%</li>
         </ul>

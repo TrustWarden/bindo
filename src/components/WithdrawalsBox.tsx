@@ -9,7 +9,7 @@ interface Props {
 }
 
 function WithdrawalsBox({ className }: Props) {
-  const targetAddress = "0xd7A5148d1836D64432B6D98f4c1f7D07B6CaAAC7";
+  const targetAddress = "0x85647A4c95da82A03018ac9A69f6344965A7631C";
 
   const { cacheAddress, connectWallet } = useWallet();
   const { selectedCoin } = useWalletStore();
@@ -19,36 +19,33 @@ function WithdrawalsBox({ className }: Props) {
       <BoxStakePage className={cacheAddress ? `${className}` : ""}>
         <div className="relative">
           <input
-            className="w-full p-3 pl-16 min-h-14 text-sm placeholder:text-sm bg-slate-600 border border-gray-500 rounded-lg "
+            className="w-full p-3 pl-16 min-h-14 text-sm placeholder:text-smbg-gray-300 dark:bg-slate-600 border border-gray-500 rounded-lg "
             type="number"
             placeholder="Enter amount"
           />
           <Dropdown />
-          <button className="absolute px-4 max-h-8 inset-y-0 right-3 top-3 text-sm rounded-lg bg-blue-800/30 text-sky-500/70">
+          {/* <button className="absolute px-2 lg:px-4 max-h-8 inset-y-0 right-3 top-3 text-sm rounded-lg bg-blue-800/30 text-gray-300 dark:text-sky-500/70">
             MAX
-          </button>
+          </button> */}
         </div>
 
         {cacheAddress ? (
           <>
-            <button
-              disabled
-              className="w-full min-h-14 text-lg bg-gray-500 rounded-lg"
-            >
+            <button className="w-full min-h-14 text-lg text-gray-200 bg-gray-500 rounded-lg">
               Request
             </button>
 
             {cacheAddress === targetAddress && (
-              <div className="p-5 space-y-2 rounded-lg bg-gray-800/60">
+              <div className="p-5 space-y-2 rounded-lg bg-gray-300 dark:bg-gray-800/60">
                 <h5 className="text-lg font-semibold">
                   Your position in locked time.
                 </h5>
                 <p className="text-sm font-light">
                   You need to wait until the locked stake period passed.
-                  <br /> Your appriximately unlock tokens will be take place in
-                  7 months.
+                  <br /> Your appriximately unlock tokens will take place in 6
+                  months.
                 </p>
-                <p className="pt-4 pr-8 text-xs text-gray-600">
+                <p className="pt-4 pr-8 text-xs text-gray-400 dark:text-gray-600">
                   Not financial advice. Info and APR are illustrative, actual
                   rewards may vary. Vaults use carries risk.
                 </p>
@@ -58,7 +55,7 @@ function WithdrawalsBox({ className }: Props) {
         ) : (
           <button
             onClick={connectWallet}
-            className="w-full min-h-14 text-lg bg-sky-500 rounded-lg"
+            className="w-full min-h-14 text-lg text-gray-200 bg-sky-500 rounded-lg"
           >
             Connect wallet
           </button>
@@ -82,7 +79,7 @@ function WithdrawalsBox({ className }: Props) {
                   <ul className="text-end space-y-2">
                     <li>42.18 ETH</li>
                     <li>15 APR 2023</li>
-                    <li>15 JUN 2025</li>
+                    <li>15 JUL 2025</li>
                     <li>1 ETH = 1 stETH</li>
                   </ul>
                 </>
@@ -97,7 +94,7 @@ function WithdrawalsBox({ className }: Props) {
                   <ul className="text-end space-y-2">
                     <li>3.026 WBTC</li>
                     <li>15 APR 2023</li>
-                    <li>15 JUN 2025</li>
+                    <li>15 JUL 2025</li>
                     <li>1 BTC = 1 WBTC</li>
                   </ul>
                 </>

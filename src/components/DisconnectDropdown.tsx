@@ -22,7 +22,7 @@ function DisconnectDropdown() {
       </button>
 
       {isOpen && (
-        <div className="absolute flex top-16 right-2 lg:right-8 w-48 lg:w-auto bg-gray-800 rounded-lg z-10">
+        <div className="absolute flex top-16 right-2 lg:right-24 w-48 lg:w-auto bg-gray-800 rounded-lg z-10">
           <button
             onClick={handleDisconnect}
             className="flex items-center justify-center w-full px-2 py-3 lg:py-2 space-x-1 text-gray-300 hover:bg-gray-600 hover:rounded-lg"

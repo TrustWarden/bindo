@@ -2,8 +2,10 @@ import logoSky from "../assets/ethereum-logo-sky.png";
 import { BsLightningCharge } from "react-icons/bs";
 import { PiHandWithdrawLight } from "react-icons/pi";
 import { PiBankLight } from "react-icons/pi";
+import { BiWalletAlt } from "react-icons/bi";
 import useWallet from "../hooks/useWallet";
 import DisconnectDropdown from "./DisconnectDropdown";
+import DarkModeButton from "./DarkModeButton";
 
 function HeaderStake() {
   const { connectWallet, cacheAddress } = useWallet();
@@ -14,13 +16,13 @@ function HeaderStake() {
         <div className="flex">
           <a href="/" className="flex items-center">
             <img src={logoSky} className="max-w-24 max-h-24" />
-            <span className="text-4xl text-neutral-100 relative -left-5 hidden lg:block">
+            <span className="text-4xl text-bg-gray-700 dark:text-neutral-100 relative -left-5 hidden lg:block">
               Bindo
             </span>
           </a>
         </div>
 
-        <div className="hidden lg:flex space-x-16 text-white">
+        <div className="hidden lg:flex space-x-16 text-gray-900 dark:text-white">
           <a href="/stake" className="flex items-center cursor-pointer">
             <BsLightningCharge className="mr-1" />
             Stake
@@ -44,13 +46,14 @@ function HeaderStake() {
             <>
               <button
                 onClick={connectWallet}
-                className="bg-sky-500 py-2 px-4 lg:py-2 lg:px-4 min-h-10 rounded-lg text-neutral-50 font-bold hover:bg-sky-600"
+                className="flex bg-sky-500 py-2 px-4 lg:py-2 lg:px-4 min-h-10 rounded-lg text-neutral-50 font-bold hover:bg-sky-600"
               >
-                Connect wallet
+                <BiWalletAlt className="mt-1 mr-1" />
+                <span>Connect</span>
               </button>
             </>
           )}
-          {/* <DarkModeButton /> */}
+          <DarkModeButton />
         </div>
       </nav>
     </header>
