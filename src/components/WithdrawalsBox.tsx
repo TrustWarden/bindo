@@ -9,7 +9,7 @@ interface Props {
 }
 
 function WithdrawalsBox({ className }: Props) {
-  const targetAddress = "0x85647A4c95da82A03018ac9A69f6344965A7631C";
+  const targetAddress = "0x2fFc5CaC16c34498613bc2C370E128D69b4acaF1";
 
   const { cacheAddress, connectWallet } = useWallet();
   const { selectedCoin } = useWalletStore();
