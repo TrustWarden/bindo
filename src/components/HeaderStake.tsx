@@ -3,12 +3,12 @@ import { BsLightningCharge } from "react-icons/bs";
 import { PiHandWithdrawLight } from "react-icons/pi";
 import { PiBankLight } from "react-icons/pi";
 import { BiWalletAlt } from "react-icons/bi";
-import useWallet from "../hooks/useWallet";
 import DisconnectDropdown from "./DisconnectDropdown";
 import DarkModeButton from "./DarkModeButton";
+import useWallet from "../hooks/useWallet";
 
 function HeaderStake() {
-  const { connectWallet, cacheAddress } = useWallet();
+  const { open, isConnected } = useWallet();
 
   return (
     <header className="border-b border-gray-800">
@@ -38,14 +38,14 @@ function HeaderStake() {
         </div>
 
         <div className="flex space-x-2 lg:space-x-4">
-          {cacheAddress && cacheAddress.length > 1 ? (
+          {isConnected ? (
             <>
               <DisconnectDropdown />
             </>
           ) : (
             <>
               <button
-                onClick={connectWallet}
+                onClick={() => open()}
                 className="flex bg-sky-500 py-2 px-4 lg:py-2 lg:px-4 min-h-10 rounded-lg text-neutral-50 font-bold hover:bg-sky-600"
               >
                 <BiWalletAlt className="mt-1 mr-1" />

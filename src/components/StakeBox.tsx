@@ -1,15 +1,14 @@
 import { FaEthereum } from "react-icons/fa";
 import BoxStakePage from "./BoxStakePage";
-import useWallet from "../hooks/useWallet";
-import useRandomGas from "../hooks/useRandomGas";
+import useRandomNumber from "../hooks/useRandomGas";
 import { useRef, useState } from "react";
+import ConnectButtonBox from "./ConnectButtonBox";
 
 interface Props {
   className?: string;
 }
 
 function StakeBox({ className }: Props) {
-  const { connectWallet, cacheAddress } = useWallet();
   const inputRef = useRef<HTMLInputElement>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -27,7 +26,6 @@ function StakeBox({ className }: Props) {
 
   return (
     <BoxStakePage className={className}>
-      {/* todo: add a box on top of blur one to show a tempo disabled message */}
       <div className="relative">
         <input
           ref={inputRef}
@@ -44,18 +42,7 @@ function StakeBox({ className }: Props) {
 
       {error && <div className="text-red-400 text-sm">{error}</div>}
 
-      {cacheAddress && cacheAddress.length > 1 ? (
-        <button className="w-full min-h-14 text-lg text-gray-200 bg-gray-500 rounded-lg">
-          Stake
-        </button>
-      ) : (
-        <button
-          onClick={connectWallet}
-          className="w-full min-h-14 text-lg text-gray-200 bg-sky-500 rounded-lg"
-        >
-          Connect wallet
-        </button>
-      )}
+      <ConnectButtonBox connectedTitle="Stake" />
 
       <div className="p-5 space-y-2 rounded-lg bg-gray-300 dark:bg-gray-800/60">
         <h5 className="text-lg font-semibold">
@@ -87,7 +74,7 @@ function StakeBox({ className }: Props) {
           <li>32 ETH</li>
           <li>1 Year</li>
           <li>1 ETH = 1 stETH</li>
-          <li>${useRandomGas()}</li>
+          <li>${useRandomNumber(8.8, 12.3)}</li>
           <li>10%</li>
         </ul>
       </div>

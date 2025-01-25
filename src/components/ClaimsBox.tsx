@@ -1,12 +1,13 @@
-import useWallet from "../hooks/useWallet";
 import BoxStakePage from "./BoxStakePage";
+import ConnectButtonBox from "./ConnectButtonBox";
+import useWallet from "../hooks/useWallet";
 
 function ClaimsBox() {
-  const { cacheAddress, connectWallet } = useWallet();
+  const { address } = useWallet();
 
   return (
     <BoxStakePage>
-      {cacheAddress ? (
+      {address ? (
         <span className="text-sm text-gray-300">
           You did not make request yet.
         </span>
@@ -15,12 +16,7 @@ function ClaimsBox() {
           <span className="flex justify-center text-sm text-gray-300">
             Connect wallet to see your withdrawal requests
           </span>
-          <button
-            onClick={connectWallet}
-            className="w-full min-h-14 text-lg bg-sky-500 rounded-lg"
-          >
-            Connect wallet
-          </button>
+          <ConnectButtonBox connectedTitle="Claim" />
         </>
       )}
 

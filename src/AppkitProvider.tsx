@@ -1,7 +1,7 @@
-// import { createAppKit } from "@reown/appkit/react";
+import { createAppKit } from "@reown/appkit/react";
 
 import { WagmiProvider } from "wagmi";
-import { arbitrum, mainnet } from "@reown/appkit/networks";
+import { mainnet, arbitrum, base } from "@reown/appkit/networks";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { WagmiAdapter } from "@reown/appkit-adapter-wagmi";
 import { ReactNode } from "react";
@@ -13,15 +13,15 @@ const queryClient = new QueryClient();
 const projectId = "d9ca7d0b839ebf25b859cb5a29b721f2";
 
 // 2. Create a metadata object - optional
-// const metadata = {
-//   name: "bindo",
-//   description: "AppKit Example",
-//   url: "https://reown.com/appkit", // origin must match your domain & subdomain
-//   icons: ["https://assets.reown.com/reown-profile-pic.png"],
-// };
+const metadata = {
+  name: "Bindo",
+  description: "Bindo fi",
+  url: "https://bindo.vercel.app", // origin must match your domain & subdomain
+  icons: ["https://assets.reown.com/reown-profile-pic.png"],
+};
 
 // 3. Set the networks
-const networks = [mainnet, arbitrum];
+const networks = [mainnet, arbitrum, base];
 
 // 4. Create Wagmi Adapter
 const wagmiAdapter = new WagmiAdapter({
@@ -31,15 +31,17 @@ const wagmiAdapter = new WagmiAdapter({
 });
 
 // 5. Create modal
-// createAppKit({
-//   adapters: [wagmiAdapter],
-//   networks,
-//   projectId,
-//   metadata,
-//   features: {
-//     analytics: true, // Optional - defaults to your Cloud configuration
-//   },
-// });
+createAppKit({
+  adapters: [wagmiAdapter],
+  networks: [mainnet, arbitrum, base],
+  defaultNetwork: mainnet,
+  projectId,
+  metadata,
+  features: {
+    analytics: true, // Optional - defaults to your Cloud configuration
+    connectMethodsOrder: ["wallet"],
+  },
+});
 
 interface Props {
   children: ReactNode;

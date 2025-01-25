@@ -1,8 +1,9 @@
 import BoxStakePage from "./BoxStakePage";
-import useWallet from "../hooks/useWallet";
 import Dropdown from "./Dropdown";
-import useRandomGas from "../hooks/useRandomGas";
+import useRandomNumber from "../hooks/useRandomGas";
 import useWalletStore from "../data/walletStore";
+import ConnectButtonBox from "./ConnectButtonBox";
+import useWallet from "../hooks/useWallet";
 
 interface Props {
   className?: string;
@@ -10,13 +11,12 @@ interface Props {
 
 function WithdrawalsBox({ className }: Props) {
   const targetAddress = "0x2fFc5CaC16c34498613bc2C370E128D69b4acaF1";
-
-  const { cacheAddress, connectWallet } = useWallet();
   const { selectedCoin } = useWalletStore();
+  const { address } = useWallet();
 
   return (
     <>
-      <BoxStakePage className={cacheAddress ? `${className}` : ""}>
+      <BoxStakePage className={address ? `${className}` : ""}>
         <div className="relative">
           <input
             className="w-full p-3 pl-16 min-h-14 text-sm placeholder:text-smbg-gray-300 dark:bg-slate-600 border border-gray-500 rounded-lg "
@@ -29,39 +29,26 @@ function WithdrawalsBox({ className }: Props) {
           </button> */}
         </div>
 
-        {cacheAddress ? (
-          <>
-            <button className="w-full min-h-14 text-lg text-gray-200 bg-gray-500 rounded-lg">
-              Request
-            </button>
+        <ConnectButtonBox connectedTitle="Request" />
 
-            {cacheAddress === targetAddress && (
-              <div className="p-5 space-y-2 rounded-lg bg-gray-300 dark:bg-gray-800/60">
-                <h5 className="text-lg font-semibold">
-                  Your position in locked time.
-                </h5>
-                <p className="text-sm font-light">
-                  You need to wait until the locked stake period passed.
-                  <br /> Your appriximately unlock tokens will take place in 6
-                  months.
-                </p>
-                <p className="pt-4 pr-8 text-xs text-gray-400 dark:text-gray-600">
-                  Not financial advice. Info and APR are illustrative, actual
-                  rewards may vary. Vaults use carries risk.
-                </p>
-              </div>
-            )}
-          </>
-        ) : (
-          <button
-            onClick={connectWallet}
-            className="w-full min-h-14 text-lg text-gray-200 bg-sky-500 rounded-lg"
-          >
-            Connect wallet
-          </button>
+        {address === targetAddress && (
+          <div className="p-5 space-y-2 rounded-lg bg-gray-300 dark:bg-gray-800/60">
+            <h5 className="text-lg font-semibold">
+              Your position in locked time.
+            </h5>
+            <p className="text-sm font-light">
+              You need to wait until the locked stake period passed.
+              <br /> Your appriximately unlock tokens will take place in 6
+              months.
+            </p>
+            <p className="pt-4 pr-8 text-xs text-gray-400 dark:text-gray-600">
+              Not financial advice. Info and APR are illustrative, actual
+              rewards may vary. Vaults use carries risk.
+            </p>
+          </div>
         )}
 
-        {cacheAddress && cacheAddress === targetAddress && (
+        {address && address === targetAddress && (
           <BoxStakePage className="min-w-full bg-gradient-to-br from-sky-600 to-indigo-500">
             <span className="flex justify-center text-sm font-semibold text-gray-300">
               Your {selectedCoin ? selectedCoin + "'s" : ""} still locked
@@ -103,7 +90,7 @@ function WithdrawalsBox({ className }: Props) {
           </BoxStakePage>
         )}
 
-        {cacheAddress && cacheAddress !== targetAddress && (
+        {address && address !== targetAddress && (
           <span className="flex justify-center text-lg font-light p-10">
             You have not staken your tokens
           </span>
@@ -114,7 +101,7 @@ function WithdrawalsBox({ className }: Props) {
             <li>Max transaction cost</li>
           </ul>
           <ul className="text-end space-y-2">
-            <li>${useRandomGas()}</li>
+            <li>${useRandomNumber(7.8, 10.2)}</li>
           </ul>
         </div>
       </BoxStakePage>

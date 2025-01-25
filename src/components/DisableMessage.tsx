@@ -5,11 +5,11 @@ interface Props {
 }
 
 function DisableMessage({ className }: Props) {
-  const { cacheAddress } = useWallet();
+  const { isConnected } = useWallet();
 
   return (
     <>
-      {cacheAddress && cacheAddress.length > 1 ? (
+      {isConnected ? (
         <div className="relative">
           <div
             className={`absolute bg-neutral-900/50 text-white rounded w-full lg:w-1/4 h-24 m-auto left-0 right-0 content-center text-center top-52 z-10 ${

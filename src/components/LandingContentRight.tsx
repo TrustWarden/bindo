@@ -1,3 +1,4 @@
+import useRandomNumber from "../hooks/useRandomGas";
 import WordSlider from "./WordsSlider";
 
 function LandingContentRight() {
@@ -18,7 +19,7 @@ function LandingContentRight() {
         </div>
 
         <div className="pt-3 lg:pl-3">
-          <p className="text-4xl">$2,405,228,045</p>
+          <p className="text-4xl">${useRandomNumber(2168698207, 2169217035)}</p>
           <p className="text-gray-300 text-2xl"> TVL</p>
         </div>
 

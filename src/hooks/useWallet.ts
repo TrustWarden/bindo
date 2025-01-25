@@ -1,71 +1,36 @@
-import { useQuery, useQueryClient } from "@tanstack/react-query";
-import useWalletStore from "../data/walletStore";
-import { ethers } from "ethers";
-import ms from "ms";
-import { useEffect } from "react";
+import { useAppKit, useDisconnect } from "@reown/appkit/react";
+import { useAppKitAccount } from "@reown/appkit/react";
+import shortenAddress from "../utils/shortenAddress";
 
 function useWallet() {
-  const queryClient = useQueryClient();
-  const { saveAddress, resetAddress, walletAddress } = useWalletStore();
-
-  const connectWallet = async (): Promise<string> => {
-    if (!window.ethereum) {
-      throw new Error("Web3 wallet not detected. Please install one.");
-    }
-
-    const provider = new ethers.BrowserProvider(
-      window.ethereum as unknown as ethers.Eip1193Provider
-    );
-    await provider.send("eth_requestAccounts", []);
-    const signer = await provider.getSigner();
-
-    const address = await signer.getAddress();
-    saveAddress(address);
-
-    localStorage.setItem("cacheAddress", address);
-    queryClient.setQueryData(["cacheAddress"], address);
-
-    return address;
-  };
-
-  const disconnectWallet = (): void => {
-    resetAddress();
-    localStorage.removeItem("cacheAddress");
-    queryClient.removeQueries();
-  };
-
+  const { open, close } = useAppKit();
   const {
-    data: cacheAddress,
-    error,
-    isLoading,
-  } = useQuery<string, Error>({
-    queryKey: ["cacheAddress"],
-    queryFn: async () => {
-      const cachedAddress = localStorage.getItem("cacheAddress");
-      if (cachedAddress) {
-        return cachedAddress;
-      }
+    address,
+    isConnected,
+    allAccounts,
+    caipAddress,
+    status,
+    embeddedWalletInfo,
+  } = useAppKitAccount();
+  const { disconnect } = useDisconnect();
 
-      return connectWallet();
-    },
-    staleTime: ms("1d"),
-    refetchOnWindowFocus: false,
-  });
+  const shortAddress = address && shortenAddress(address);
 
-  useEffect(() => {
-    const cachedAddress = localStorage.getItem("walletAddress");
-    if (cachedAddress) {
-      queryClient.setQueryData(["walletAddress"], cachedAddress);
-    }
-  }, [queryClient]);
+  const handleDisconnect = async () => {
+    await disconnect();
+  };
 
   return {
-    disconnectWallet,
-    connectWallet,
-    cacheAddress,
-    walletAddress,
-    error,
-    isLoading,
+    open,
+    close,
+    address,
+    isConnected,
+    allAccounts,
+    caipAddress,
+    status,
+    embeddedWalletInfo,
+    shortAddress,
+    handleDisconnect,
   };
 }
 
