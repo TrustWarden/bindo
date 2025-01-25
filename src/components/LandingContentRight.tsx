@@ -1,7 +1,11 @@
 import useRandomNumber from "../hooks/useRandomGas";
+import formatNumberWithCommas from "../utils/formatNumberWithCommas";
 import WordSlider from "./WordsSlider";
 
 function LandingContentRight() {
+  const randomNumber = useRandomNumber(2168698207, 2169217035);
+  const formattedNumber = formatNumberWithCommas(randomNumber);
+
   return (
     <div className="lg:flex-1 flex-col lg:px-9 lg:py-32 space-y-2 lg:space-y-6 mt-6 lg:mt-0">
       <p className="flex-1 text-4xl lg:text-6xl font-light md:text-4xl sm:text-4xl mb-2 lg:mb-3">
@@ -19,7 +23,7 @@ function LandingContentRight() {
         </div>
 
         <div className="pt-3 lg:pl-3">
-          <p className="text-4xl">${useRandomNumber(2168698207, 2169217035)}</p>
+          <p className="text-4xl">${formattedNumber}</p>
           <p className="text-gray-300 text-2xl"> TVL</p>
         </div>
 
