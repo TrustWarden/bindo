@@ -7,6 +7,8 @@ import WithdrawalsBox from "./components/WithdrawalsBox";
 import ClaimsBox from "./components/ClaimsBox";
 import Privacy from "./components/Privacy";
 import Terms from "./components/Terms";
+import Contact from "./components/Contact";
+import FAQ from "./components/FAQ";
 
 const router = createBrowserRouter([
   { path: "/", element: <App /> },
@@ -14,6 +16,8 @@ const router = createBrowserRouter([
   { path: "/lend", element: <LendMain /> },
   { path: "/privacy", element: <Privacy /> },
   { path: "/terms-of-use", element: <Terms /> },
+  { path: "/contact", element: <Contact /> },
+  { path: "/FAQ", element: <FAQ /> },
   {
     path: "/withdrawals",
     element: <WithdrawalsMain />,

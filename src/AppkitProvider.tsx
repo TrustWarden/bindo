@@ -37,6 +37,8 @@ createAppKit({
   defaultNetwork: mainnet,
   projectId,
   metadata,
+  privacyPolicyUrl: "https://www.optimism.io/attestation-terms",
+  termsConditionsUrl: "https://www.optimism.io/gateway-terms",
   features: {
     analytics: true, // Optional - defaults to your Cloud configuration
     connectMethodsOrder: ["wallet"],
