@@ -3,7 +3,7 @@ import formatNumberWithCommas from "../utils/formatNumberWithCommas";
 import WordSlider from "./WordsSlider";
 
 function LandingContentRight() {
-  const randomNumber = useRandomNumber(1745329112, 1784922215);
+  const randomNumber = useRandomNumber(1345329031, 1384150210);
   const formattedNumber = formatNumberWithCommas(randomNumber);
 
   return (

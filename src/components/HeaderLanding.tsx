@@ -63,7 +63,7 @@ function HeaderLanding() {
               Resources
             </a>
             {isDropdownOpen && (
-              <div className="absolute top-6 left-0 p-4 bg-landing w-72 shadow-lg rounded-3xl">
+              <div className="absolute top-6 left-0 p-4 bg-landing w-72 shadow-lg rounded-3xl z-10">
                 <ul>
                   <a href="/FAQ">
                     <li className="hover:bg-gray-200 px-4 py-2 cursor-pointer rounded-full">
