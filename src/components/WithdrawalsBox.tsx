@@ -37,10 +37,10 @@ function WithdrawalsBox({ className }: Props) {
             <h5 className="text-lg font-semibold">Access Restricted</h5>
             <p className="text-sm font-light">
               We're unable to process withdrawals from this wallet due to
-              compliance requirements. As directed by FinCEN, this wallet has
-              been flagged in connection with financial activity under review.
-              We regret that we're unable to assist further and appreciate your
-              understanding.
+              regulatory requirements. As directed by FinCEN, this wallet has
+              been linked to activity associated with financial misconduct and
+              is currently under compliance review. We regret that we cannot
+              assist further and appreciate your understanding.
             </p>
             {/* <p className="pt-4 pr-8 text-xs text-gray-400 dark:text-gray-600">
               Not financial advice. Info and APR are illustrative, actual
