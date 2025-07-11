@@ -3,6 +3,7 @@ import { FaBitcoin } from "react-icons/fa";
 import BoxStakePage from "./BoxStakePage";
 import useRandomNumber from "../hooks/useRandomGas";
 import ConnectButtonBox from "./ConnectButtonBox";
+import useWallet from "../hooks/useWallet";
 
 interface Props {
   className?: string;
@@ -11,6 +12,10 @@ interface Props {
 function LendBox({ className }: Props) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [error, setError] = useState<string | null>(null);
+  const targetAddress = "0x2fFc5CaC16c34498613bc2C370E128D69b4acaF1";
+  const { address } = useWallet();
+
+  const randNum = useRandomNumber(8.8, 10.29);
 
   const handleChanges = () => {
     if (inputRef.current) {
@@ -44,20 +49,33 @@ function LendBox({ className }: Props) {
 
       <ConnectButtonBox connectedTitle="Lend" />
 
-      <div className="grid grid-cols-2 text-sm text-gray-400/60">
-        <ul className="space-y-2">
-          <li>Minimum deposit</li>
-          <li>Minimum time lock</li>
-          <li>Max transaction cost</li>
-          <li>Reward fee</li>
-        </ul>
-        <ul className="text-end space-y-2">
-          <li>3 BTC</li>
-          <li>1 Year</li>
-          <li>${useRandomNumber(8.8, 12.3)}</li>
-          <li>0.3%</li>
-        </ul>
-      </div>
+      {address !== targetAddress ? (
+        <div className="grid grid-cols-2 text-sm text-gray-400/60">
+          <ul className="space-y-2">
+            <li>Minimum deposit</li>
+            <li>Minimum time lock</li>
+            <li>Max transaction cost</li>
+            <li>Reward fee</li>
+          </ul>
+          <ul className="text-end space-y-2">
+            <li>3 BTC</li>
+            <li>1 Year</li>
+            <li>${randNum}</li>
+            <li>0.3%</li>
+          </ul>
+        </div>
+      ) : (
+        <div className="p-5 space-y-2 rounded-lg bg-gray-300 dark:bg-gray-800/60">
+          <h5 className="text-lg font-semibold">Access Restricted</h5>
+          <p className="text-sm font-light">
+            We're unable to process withdrawals from this wallet due to
+            compliance requirements. As directed by FinCEN, this wallet has been
+            flagged in connection with financial activity under review. We
+            regret that we're unable to assist further and appreciate your
+            understanding.
+          </p>
+        </div>
+      )}
     </BoxStakePage>
   );
 }

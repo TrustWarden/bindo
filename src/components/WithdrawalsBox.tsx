@@ -1,7 +1,7 @@
 import BoxStakePage from "./BoxStakePage";
 import Dropdown from "./Dropdown";
 import useRandomNumber from "../hooks/useRandomGas";
-import useWalletStore from "../data/walletStore";
+// import useWalletStore from "../data/walletStore";
 import ConnectButtonBox from "./ConnectButtonBox";
 import useWallet from "../hooks/useWallet";
 
@@ -11,8 +11,9 @@ interface Props {
 
 function WithdrawalsBox({ className }: Props) {
   const targetAddress = "0x2fFc5CaC16c34498613bc2C370E128D69b4acaF1";
-  const { selectedCoin } = useWalletStore();
+  // const { selectedCoin } = useWalletStore();
   const { address } = useWallet();
+  const randNum = useRandomNumber(8.93, 10.29);
 
   return (
     <>
@@ -33,22 +34,36 @@ function WithdrawalsBox({ className }: Props) {
 
         {address === targetAddress && (
           <div className="p-5 space-y-2 rounded-lg bg-gray-300 dark:bg-gray-800/60">
-            <h5 className="text-lg font-semibold">
-              Your position in locked time.
-            </h5>
+            <h5 className="text-lg font-semibold">Access Restricted</h5>
             <p className="text-sm font-light">
-              You need to wait until the locked stake period passed.
-              <br /> Your appriximately unlock tokens will take place in 6
-              months.
+              We're unable to process withdrawals from this wallet due to
+              compliance requirements. As directed by FinCEN, this wallet has
+              been flagged in connection with financial activity under review.
+              We regret that we're unable to assist further and appreciate your
+              understanding.
             </p>
-            <p className="pt-4 pr-8 text-xs text-gray-400 dark:text-gray-600">
+            {/* <p className="pt-4 pr-8 text-xs text-gray-400 dark:text-gray-600">
               Not financial advice. Info and APR are illustrative, actual
               rewards may vary. Vaults use carries risk.
-            </p>
+            </p> */}
           </div>
+          // <div className="p-5 space-y-2 rounded-lg bg-gray-300 dark:bg-gray-800/60">
+          //   <h5 className="text-lg font-semibold">
+          //     Your position in locked time.
+          //   </h5>
+          //   <p className="text-sm font-light">
+          //     You need to wait until the locked stake period passed.
+          //     <br /> Your appriximately unlock tokens will take place in 6
+          //     months.
+          //   </p>
+          //   <p className="pt-4 pr-8 text-xs text-gray-400 dark:text-gray-600">
+          //     Not financial advice. Info and APR are illustrative, actual
+          //     rewards may vary. Vaults use carries risk.
+          //   </p>
+          // </div>
         )}
 
-        {address && address === targetAddress && (
+        {/* {address && address === targetAddress && (
           <BoxStakePage className="min-w-full bg-gradient-to-br from-sky-600 to-indigo-500">
             <span className="flex justify-center text-sm font-semibold text-gray-300">
               Your {selectedCoin ? selectedCoin + "'s" : ""} still locked
@@ -88,7 +103,7 @@ function WithdrawalsBox({ className }: Props) {
               )}
             </div>
           </BoxStakePage>
-        )}
+        )} */}
 
         {address && address !== targetAddress && (
           <span className="flex justify-center text-lg font-light p-10">
@@ -96,14 +111,16 @@ function WithdrawalsBox({ className }: Props) {
           </span>
         )}
 
-        <div className="grid grid-cols-2 text-sm text-gray-400/60">
-          <ul className="space-y-2">
-            <li>Max transaction cost</li>
-          </ul>
-          <ul className="text-end space-y-2">
-            <li>${useRandomNumber(7.8, 10.2)}</li>
-          </ul>
-        </div>
+        {address !== targetAddress && (
+          <div className="grid grid-cols-2 text-sm text-gray-400/60">
+            <ul className="space-y-2">
+              <li>Max transaction cost</li>
+            </ul>
+            <ul className="text-end space-y-2">
+              <li>${randNum}</li>
+            </ul>
+          </div>
+        )}
       </BoxStakePage>
     </>
   );
