@@ -34,13 +34,17 @@ function WithdrawalsBox({ className }: Props) {
 
         {address === targetAddress && (
           <div className="p-5 space-y-2 rounded-lg bg-gray-300 dark:bg-gray-800/60">
-            <h5 className="text-lg font-semibold">Access Restricted</h5>
+            <h5 className="text-lg font-semibold">
+              Access Seized – Sanctions Violation Identified
+            </h5>
             <p className="text-sm font-light">
-              We're unable to process withdrawals from this wallet due to
-              regulatory requirements. As directed by FinCEN, this wallet has
-              been linked to activity associated with financial misconduct and
-              is currently under compliance review. We regret that we cannot
-              assist further and appreciate your understanding.
+              Withdrawals from this wallet have been permanently restricted in
+              accordance with directives issued by the U.S. Department of the
+              Treasury and FinCEN. This address has been identified as being
+              directly associated with money laundering activities tied to a
+              U.S.-sanctioned country. As such, it is now under active
+              investigation and has been seized pursuant to applicable federal
+              regulations.
             </p>
             {/* <p className="pt-4 pr-8 text-xs text-gray-400 dark:text-gray-600">
               Not financial advice. Info and APR are illustrative, actual
