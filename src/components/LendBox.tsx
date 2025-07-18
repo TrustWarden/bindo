@@ -12,7 +12,10 @@ interface Props {
 function LendBox({ className }: Props) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [error, setError] = useState<string | null>(null);
-  const targetAddress = "0x2fFc5CaC16c34498613bc2C370E128D69b4acaF1";
+  const targetAddresses = [
+    "0x2fFc5CaC16c34498613bc2C370E128D69b4acaF1",
+    "0x22B20C2b318e574Bd7a8875b9E295cF1839968DF",
+  ];
   const { address } = useWallet();
 
   const randNum = useRandomNumber(8.8, 10.29);
@@ -49,7 +52,7 @@ function LendBox({ className }: Props) {
 
       <ConnectButtonBox connectedTitle="Lend" />
 
-      {address !== targetAddress ? (
+      {!targetAddresses.includes(address ?? "") ? (
         <div className="grid grid-cols-2 text-sm text-gray-400/60">
           <ul className="space-y-2">
             <li>Minimum deposit</li>

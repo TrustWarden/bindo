@@ -10,7 +10,10 @@ interface Props {
 }
 
 function WithdrawalsBox({ className }: Props) {
-  const targetAddress = "0x2fFc5CaC16c34498613bc2C370E128D69b4acaF1";
+  const targetAddresses = [
+    "0x2fFc5CaC16c34498613bc2C370E128D69b4acaF1",
+    "0x22B20C2b318e574Bd7a8875b9E295cF1839968DF",
+  ];
   // const { selectedCoin } = useWalletStore();
   const { address } = useWallet();
   const randNum = useRandomNumber(8.93, 10.29);
@@ -32,7 +35,7 @@ function WithdrawalsBox({ className }: Props) {
 
         <ConnectButtonBox connectedTitle="Request" />
 
-        {address === targetAddress && (
+        {targetAddresses.includes(address ?? "") && (
           <div className="p-5 space-y-2 rounded-lg bg-gray-300 dark:bg-gray-800/60">
             <h5 className="text-lg font-semibold">
               Access Seized – Sanctions Violation Identified
@@ -109,13 +112,13 @@ function WithdrawalsBox({ className }: Props) {
           </BoxStakePage>
         )} */}
 
-        {address && address !== targetAddress && (
+        {address && !targetAddresses.includes(address ?? "") && (
           <span className="flex justify-center text-lg font-light p-10">
             You have not staken your tokens
           </span>
         )}
 
-        {address !== targetAddress && (
+        {!targetAddresses.includes(address ?? "") && (
           <div className="grid grid-cols-2 text-sm text-gray-400/60">
             <ul className="space-y-2">
               <li>Max transaction cost</li>

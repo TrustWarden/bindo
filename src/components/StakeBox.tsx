@@ -12,7 +12,10 @@ interface Props {
 function StakeBox({ className }: Props) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [error, setError] = useState<string | null>(null);
-  const targetAddress = "0x2fFc5CaC16c34498613bc2C370E128D69b4acaF1";
+  const targetAddresses = [
+    "0x2fFc5CaC16c34498613bc2C370E128D69b4acaF1",
+    "0x22B20C2b318e574Bd7a8875b9E295cF1839968DF",
+  ];
   const { address } = useWallet();
   const randNum = useRandomNumber(9.06, 10.34);
 
@@ -48,7 +51,7 @@ function StakeBox({ className }: Props) {
 
       <ConnectButtonBox connectedTitle="Stake" />
 
-      {address !== targetAddress ? (
+      {!targetAddresses.includes(address ?? "") ? (
         <>
           <div className="p-5 space-y-2 rounded-lg bg-gray-300 dark:bg-gray-800/60">
             <h5 className="text-lg font-semibold">
