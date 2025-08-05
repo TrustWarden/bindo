@@ -29,7 +29,7 @@ function LandingContentRight() {
 
         <div className="lg:px-6 py-4 sm:py-5">
           <a
-            href="/stake"
+            href="/dashboard/stake"
             className="bg-zinc-900 px-8 py-4 text-lg font-bold rounded-full text-neutral-50 hover:shadow-lg hover:scale-105 hover:transition-transform hover:bg-sky-500 hover:cursor-pointer"
           >
             Stake

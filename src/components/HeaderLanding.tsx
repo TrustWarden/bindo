@@ -36,10 +36,16 @@ function HeaderLanding() {
         </div>
 
         <div className="hidden md:flex space-x-16">
-          <a href="/stake" className="text-sm/6 font-semibold text-gray-900">
+          <a
+            href="/dashboard/stake"
+            className="text-sm/6 font-semibold text-gray-900"
+          >
             Stake
           </a>
-          <a href="/lend" className="text-sm/6 font-semibold text-gray-900">
+          <a
+            href="/dashboard/lend"
+            className="text-sm/6 font-semibold text-gray-900"
+          >
             Lend
           </a>
           <a
@@ -57,8 +63,7 @@ function HeaderLanding() {
           <div className="relative" onMouseLeave={handleMouseLeave}>
             <a
               onMouseEnter={handleMouseEnter}
-              href="/privacy"
-              className="text-sm/6 font-semibold text-gray-900"
+              className="text-sm/6 font-semibold text-gray-900 cursor-pointer"
             >
               Resources
             </a>
@@ -92,7 +97,7 @@ function HeaderLanding() {
         </div>
         <div className="flex space-x-5">
           <a
-            href="/stake"
+            href="/dashboard/stake"
             className="bg-zinc-900 py-2 px-4 lg:py-3 lg:px-6 rounded-full text-neutral-50 font-bold hover:shadow-lg hover:scale-105 hover:transition-transform hover:bg-sky-500"
           >
             Stake ETH
@@ -120,12 +125,12 @@ function HeaderLanding() {
               </button>
             </div>
             <ul className="mt-4 space-y-2">
-              <a href="/stake">
+              <a href="/dashboard/stake">
                 <li className="hover:bg-gray-200 px-4 py-2 cursor-pointer">
                   Stake
                 </li>
               </a>
-              <a href="/lend">
+              <a href="/dashboard/lend">
                 <li className="hover:bg-gray-200 px-4 py-2 cursor-pointer">
                   Lend
                 </li>

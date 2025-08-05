@@ -6,6 +6,7 @@ import { BiWalletAlt } from "react-icons/bi";
 import DisconnectDropdown from "./DisconnectDropdown";
 import DarkModeButton from "./DarkModeButton";
 import useWallet from "../hooks/useWallet";
+import { Link } from "react-router-dom";
 
 function HeaderStake() {
   const { open, isConnected } = useWallet();
@@ -23,18 +24,27 @@ function HeaderStake() {
         </div>
 
         <div className="hidden lg:flex space-x-16 text-gray-900 dark:text-white">
-          <a href="/stake" className="flex items-center cursor-pointer">
+          <Link
+            to="/dashboard/stake"
+            className="flex items-center cursor-pointer"
+          >
             <BsLightningCharge className="mr-1" />
             Stake
-          </a>
-          <a href="/lend" className="flex items-center cursor-pointer">
+          </Link>
+          <Link
+            to="/dashboard/lend"
+            className="flex items-center cursor-pointer"
+          >
             <PiBankLight className="mr-1" />
             Lend
-          </a>
-          <a href="/withdrawals" className="flex items-center cursor-pointer">
+          </Link>
+          <Link
+            to="/dashboard/withdrawals"
+            className="flex items-center cursor-pointer"
+          >
             <PiHandWithdrawLight className="mr-1" />
             Withdrawals
-          </a>
+          </Link>
         </div>
 
         <div className="flex space-x-2 lg:space-x-4">
